@@ -1,24 +1,19 @@
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Solution{
 	public static boolean possibleToMakeTriangle(ArrayList<Integer> arr){
-		
+		// Sort the array in non-decreasing order.
+		Collections.sort(arr);
+
 		int n = arr.size();
 
-		// Iterate for the first element.
-		for (int i = 0; i < n; i++){
+		// Iterate the array/list.
+		for (int i = 0; i < n - 2; i++){
 
-			// Iterate for the second element.
-			for (int j = i + 1; j < n; j++){
-
-				// Iterate for the third element.
-				for (int k = j + 1; k < n; k++){
-
-					// Check all conditions for a non- denegerate triangle.
-					if ( (arr.get(i) + arr.get(j) > arr.get(k)) && (arr.get(j) + arr.get(k) > arr.get(i)) && (arr.get(k) + arr.get(i) > arr.get(j)) ){
-						return true;
-					}
-				}
+			// Return true if sum of first 2 elements is greater than the 3rd element.
+			if (arr.get(i) + arr.get(i + 1) > arr.get(i + 2)){
+				return true;
 			}
 		}
 
